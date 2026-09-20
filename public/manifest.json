@@ -1,0 +1,17 @@
+{
+  "name": "Treat Time",
+  "short_name": "Treat Time",
+  "description": "Catch falling treats with a fluffy Shih Tzu.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1a1410",
+  "theme_color": "#7ec8e3",
+  "icons": [
+    {
+      "src": "/sprites/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}
