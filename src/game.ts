@@ -14,7 +14,7 @@ import {
 const BEST_KEY = "treat-time-best";
 const DOG_Y = 248;
 const COMBO_WINDOW = 1.6;
-const HIT_IFRAMES = 0.75;
+const HIT_IFRAMES = 1.0;
 
 type Screen = "title" | "play" | "over";
 type Anim = "idle" | "hop" | "hit";
@@ -123,7 +123,7 @@ export class Game {
     this.followPointer(dt, 1);
     this.hintLeft = Math.max(0, this.hintLeft - dt);
     this.spawnIn -= dt;
-    if (this.spawnIn <= 0) {
+    if (this.spawnIn <= 0 && this.items.length < 4) {
       this.spawnItem();
       this.spawnIn = this.spawnDelay();
     }
@@ -205,16 +205,16 @@ export class Game {
   }
 
   private spawnDelay(): number {
-    return Math.max(0.42, 1.12 - this.score * 0.004);
+    return Math.max(0.55, 1.45 - this.score * 0.003);
   }
 
   private fallSpeed(hazard: boolean): number {
-    const base = 46 + Math.min(72, this.score * 0.34);
-    return hazard ? base * 0.62 : base;
+    const base = 34 + Math.min(56, this.score * 0.22);
+    return hazard ? base * 0.64 : base;
   }
 
   private spawnItem(): void {
-    const hazardChance = 0.16 + Math.min(0.14, this.score * 0.0012);
+    const hazardChance = this.score < 20 ? 0 : 0.12 + Math.min(0.12, this.score * 0.001);
     const hazard = Math.random() < hazardChance;
     const kind = hazard ? 3 + (Math.random() < 0.5 ? 0 : 1) : Math.floor(Math.random() * 3);
     this.items.push({
@@ -227,10 +227,10 @@ export class Game {
   }
 
   private overlapsDog(item: Falling): boolean {
-    const left = this.dogX - 12;
-    const right = this.dogX + 12;
-    const top = DOG_Y + 4;
-    const bottom = DOG_Y + 20;
+    const left = this.dogX - 16;
+    const right = this.dogX + 16;
+    const top = DOG_Y + 2;
+    const bottom = DOG_Y + 26;
     const ix = item.x;
     const iy = item.y;
     return ix > left && ix < right && iy > top && iy < bottom;
