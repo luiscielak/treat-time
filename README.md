@@ -2,7 +2,9 @@
 
 A tiny mobile pixel-art treat catcher. Drag the Shih Tzu along the bottom of the park and catch falling snacks. Soap and vacuum puffs cost a life.
 
-## Play
+**Play:** [luiscielak.github.io/treat-time](https://luiscielak.github.io/treat-time/)
+
+## Play locally
 
 ```bash
 npm install
