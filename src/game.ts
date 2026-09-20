@@ -323,6 +323,8 @@ export class Game {
       return;
     }
 
+    ctx.fillStyle = "rgba(255,248,238,0.82)";
+    ctx.fillRect(4, 4, 40, 16);
     drawText(ctx, String(this.score), 8, 7, "#3d2314", 2);
     for (let i = 0; i < 3; i++) {
       drawUiIcon(ctx, this.atlas, i < this.lives ? 0 : 1, 8 + i * 14, 22);
