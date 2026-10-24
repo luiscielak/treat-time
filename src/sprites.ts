@@ -1,6 +1,7 @@
 export const WORLD_W = 180;
 export const WORLD_H = 320;
 export const DOG_SIZE = 32;
+export const DOG_DRAW = 40;
 export const ITEM_SIZE = 16;
 
 export type Atlas = {
@@ -49,7 +50,18 @@ export function drawDog(
   x: number,
   y: number,
 ): void {
-  blit(ctx, atlas.dog, frame * DOG_SIZE, 0, DOG_SIZE, DOG_SIZE, x - DOG_SIZE / 2, y);
+  const dest = DOG_DRAW;
+  ctx.drawImage(
+    atlas.dog,
+    frame * DOG_SIZE,
+    0,
+    DOG_SIZE,
+    DOG_SIZE,
+    Math.round(x - dest / 2),
+    Math.round(y),
+    dest,
+    dest,
+  );
 }
 
 export function drawItem(

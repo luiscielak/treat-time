@@ -12,7 +12,7 @@ import {
 } from "./sprites.ts";
 
 const BEST_KEY = "treat-time-best";
-const DOG_Y = 248;
+const DOG_Y = 240;
 const COMBO_WINDOW = 1.6;
 const HIT_IFRAMES = 1.0;
 
@@ -227,10 +227,10 @@ export class Game {
   }
 
   private overlapsDog(item: Falling): boolean {
-    const left = this.dogX - 16;
-    const right = this.dogX + 16;
-    const top = DOG_Y + 2;
-    const bottom = DOG_Y + 26;
+    const left = this.dogX - 18;
+    const right = this.dogX + 18;
+    const top = DOG_Y + 4;
+    const bottom = DOG_Y + 32;
     const ix = item.x;
     const iy = item.y;
     return ix > left && ix < right && iy > top && iy < bottom;
